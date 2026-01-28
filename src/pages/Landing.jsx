@@ -3,31 +3,52 @@ import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-600 to-green-800 flex flex-col justify-center items-center text-white px-6">
-      <MdSportsTennis className="text-7xl mb-4 drop-shadow-lg" />
+    <div className="relative min-h-screen flex items-center justify-center text-white">
 
-      <h1 className="text-4xl font-extrabold mb-2 tracking-wide">
-        Club de Pádel
-      </h1>
+      {/* Hero image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('../src/assets/img/background.jpg')",
+        }}
+      />
 
-      <p className="text-lg opacity-90 mb-8 text-center max-w-md">
-        Reserva tu pista, gestiona tus partidos y disfruta del deporte con una experiencia ágil y moderna.
-      </p>
+      {/* Overlay oscuro */}
+      <div className="absolute inset-0 bg-[#0A1A2F]/80 backdrop-blur-sm" />
 
-      <div className="flex gap-4">
-        <Link
-          to="/login"
-          className="bg-white text-green-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
-        >
-          Iniciar sesión
-        </Link>
+      {/* Contenido */}
+      <div className="relative z-10 text-center px-6 max-w-2xl">
+        <MdSportsTennis className="text-7xl mx-auto mb-6 text-[#C7FF41]" />
 
-        <Link
-          to="/register"
-          className="bg-green-900 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-950 transition"
-        >
-          Crear cuenta
-        </Link>
+        <h1 className="text-5xl font-extrabold tracking-wide mb-4">
+          Vive el Pádel al Máximo
+        </h1>
+
+        <p className="text-lg font-light text-gray-200 mb-10">
+          Reserva tu pista, organiza tus partidos y disfruta de una experiencia
+          deportiva moderna, rápida y diseñada para ti.
+        </p>
+
+        {/* Botones */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          {/* Botón principal */}
+          <Link
+            to="/login"
+            className="bg-[#C7FF41] text-[#0A1A2F] font-bold px-8 py-3 rounded-full shadow-lg hover:bg-[#b8f63a] transition tracking-wide"
+          >
+            Iniciar sesión
+          </Link>
+
+          {/* Botón outlined */}
+          <Link
+            to="/register"
+            className="border-2 border-[#C7FF41] text-[#C7FF41] font-semibold px-8 py-3 rounded-full hover:bg-[#C7FF41] hover:text-[#0A1A2F] transition tracking-wide"
+          >
+            Crear cuenta
+          </Link>
+        </div>
       </div>
     </div>
   );
