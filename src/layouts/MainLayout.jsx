@@ -6,7 +6,7 @@ export default function MainLayout() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex bg-[#0A1A2F] text-white flex-col">
       <PublicNavbar user={user} />
 
       <main className="flex-1">

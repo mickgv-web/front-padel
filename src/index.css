@@ -16,7 +16,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--color-navy);
-  color: white;
+  color: var(--color-light);
 }
 
 /* Enlaces por defecto */

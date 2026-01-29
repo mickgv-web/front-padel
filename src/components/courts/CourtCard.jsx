@@ -41,8 +41,8 @@ export default function CourtCard({ pista, fecha }) {
       setSelectedSlots(prev => [...prev, slotId]);
     }
   };
-
-  // Calcular precio dinámico
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedSlots.length === 0) {
       setPrice(null);
@@ -64,7 +64,8 @@ export default function CourtCard({ pista, fecha }) {
       const total = results.reduce((sum, r) => sum + r.precio, 0);
       setPrice(total);
     });
-  }, [selectedSlots, extras]);
+  }, [selectedSlots, extras, pista.pista_id]);
+
 
   return (
     <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-lg">
@@ -105,6 +106,7 @@ export default function CourtCard({ pista, fecha }) {
         fecha={fecha}
         slots={selectedSlots}
         extras={extras}
+        price={price}
       />
     </div>
   );

@@ -9,7 +9,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import MisReservas from "../pages/MisReservas";
-import AdminPanel from "../pages/AdminPanel";
+import AdminPanel from "../pages/admin/AdminPanel";
 
 export default function AppRouter() {
   return (

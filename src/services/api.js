@@ -15,6 +15,19 @@ export async function apiFetch(path, options = {}) {
     headers,
   });
 
+  // Si el token ha expirado → logout + redirect
+  if (res.status === 401) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // Evita bucles infinitos
+    if (window.location.pathname !== "/login") {
+      window.location.href = "/login";
+    }
+
+    return;
+  }
+
   if (!res.ok) {
     const text = await res.text();
     throw new Error(text || "Error en la API");
