@@ -9,9 +9,7 @@ const NAV_ITEMS = {
     { to: "/register", label: "Crear cuenta", button: true }
   ],
   1: [
-    { to: "/admin", label: "Panel admin" },
-    { to: "/dashboard", label: "Crear reserva" },
-    { to: "/mis-reservas", label: "Mis reservas" }
+    { to: "/admin", label: "Panel admin" }
   ],
   2: [
     { to: "/dashboard", label: "Crear reserva" },
