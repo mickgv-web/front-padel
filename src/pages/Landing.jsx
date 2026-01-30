@@ -1,5 +1,6 @@
 import { MdSportsTennis } from "react-icons/md";
 import { Link } from "react-router-dom";
+import background from '../assets/img/background.jpg';
 
 export default function Landing() {
   return (
@@ -9,8 +10,7 @@ export default function Landing() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('../src/assets/img/background.jpg')",
+          backgroundImage: `url(${background})`,
         }}
       />
 
