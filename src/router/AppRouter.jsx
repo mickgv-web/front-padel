@@ -13,7 +13,7 @@ import AdminPanel from "../pages/admin/AdminPanel";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
 
         {/* Rutas con layout (navbar + estructura) */}
