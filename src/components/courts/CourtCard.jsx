@@ -30,18 +30,41 @@ export default function CourtCard({ pista, fecha }) {
     return newId === first - 1 || newId === last + 1;
   };
 
+  // Calcular franjas elegibles visualmente
+  const getEligibleSlots = () => {
+    if (selectedSlots.length === 0) {
+      return pista.disponibles.map(s => s.horario_id);
+    }
+
+    const sorted = [...selectedSlots].sort((a, b) => a - b);
+    const first = sorted[0];
+    const last = sorted[sorted.length - 1];
+
+    return [first - 1, last + 1];
+  };
+
+  const eligibleSlots = getEligibleSlots();
+
   const handleSlotClick = (slotId) => {
+    // Si ya está seleccionado → solo permitir desmarcar extremos
     if (selectedSlots.includes(slotId)) {
-      const newSlots = selectedSlots.filter(id => id !== slotId);
-      setSelectedSlots(newSlots);
+      const sorted = [...selectedSlots].sort((a, b) => a - b);
+      const first = sorted[0];
+      const last = sorted[sorted.length - 1];
+
+      // Si intenta desmarcar algo que no es extremo → ignorar
+      if (slotId !== first && slotId !== last) return;
+
+      setSelectedSlots(selectedSlots.filter(id => id !== slotId));
       return;
     }
 
+    // Si no está seleccionado → solo permitir si es contiguo
     if (isContiguous(selectedSlots, slotId)) {
       setSelectedSlots(prev => [...prev, slotId]);
     }
   };
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedSlots.length === 0) {
@@ -80,14 +103,20 @@ export default function CourtCard({ pista, fecha }) {
           <div key={turno} className="mb-6">
             <h4 className="text-lg font-semibold mb-2 capitalize">{turno}</h4>
             <div className="flex flex-wrap gap-2">
-              {groupedSlots[turno].map(slot => (
-                <TimeSlotButton
-                  key={slot.horario_id}
-                  slot={slot}
-                  selected={selectedSlots.includes(slot.horario_id)}
-                  onClick={() => handleSlotClick(slot.horario_id)}
-                />
-              ))}
+              {groupedSlots[turno].map(slot => {
+                const id = slot.horario_id;
+
+                return (
+                  <TimeSlotButton
+                    key={id}
+                    slot={slot}
+                    selected={selectedSlots.includes(id)}
+                    eligible={eligibleSlots.includes(id)}
+                    disabled={false} // futuro: !slot.disponible
+                    onClick={() => handleSlotClick(id)}
+                  />
+                );
+              })}
             </div>
           </div>
         )

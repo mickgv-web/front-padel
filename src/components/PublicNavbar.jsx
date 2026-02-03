@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { FiMenu, FiX } from "react-icons/fi";
+import { MdSportsTennis } from "react-icons/md";
 
 const NAV_ITEMS = {
   0: [
@@ -30,9 +31,12 @@ export default function PublicNavbar() {
 
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-wide text-[#C7FF41] hover:opacity-90 transition"
+          className="flex items-center text-2xl font-extrabold tracking-wide text-[#C7FF41] hover:opacity-90 transition"
         >
-          Club de Pádel
+          <MdSportsTennis className="text-2xl mr-3 text-[#C7FF41]" />
+          <span className="text-white font-extrabold">Court</span>
+          <span className="ml-1 text-[#C7FF41] font-bold italic">Lab</span>
+
         </Link>
 
         {/* Desktop */}
