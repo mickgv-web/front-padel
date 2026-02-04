@@ -32,7 +32,7 @@ Incluye además un panel de usuario con "Mis reservas" y un panel de administrac
 - React Router
 - TailwindCSS
 - Context API
-- Fetch wrapper propio (services/api.js)
+- Fetch wrapper propio (`services/api.js`)
 
 ---
 
@@ -71,13 +71,19 @@ src
 ## Instalación y ejecución
 
 1. Instalar dependencias:
-   npm install
+
+    ```md
+    npm install
+    ```
 
 2. Ejecutar en modo desarrollo:
+
+   ```md
    npm run dev
+   ```
 
 3. Variables de entorno:
-   El proyecto utiliza archivos .env.local y .env.production para configurar la URL de la API y otros parámetros necesarios.
+   El proyecto utiliza archivos `.env.local` y `.env.production` para configurar la URL de la API y otros parámetros necesarios.
 
 ---
 
