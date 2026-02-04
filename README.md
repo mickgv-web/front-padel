@@ -38,6 +38,7 @@ Incluye además un panel de usuario con "Mis reservas" y un panel de administrac
 
 ## Estructura del proyecto
 
+```md
 src  
 ├── assets/
 ├── components/
@@ -63,6 +64,7 @@ src
 ├── App.jsx  
 ├── index.css  
 └── main.jsx
+```
 
 ---
 
