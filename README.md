@@ -1,16 +1,92 @@
-# React + Vite
+# CourtLab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación frontend desarrollada con Vite + React + JavaScript para la gestión de reservas de pistas de pádel.  
+Permite consultar pistas disponibles para una fecha, seleccionar franjas horarias contiguas, añadir extras, calcular el precio en tiempo real y realizar reservas.  
+Incluye además un panel de usuario con "Mis reservas" y un panel de administración básico.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características principales
 
-## React Compiler
+- Visualización de todas las pistas disponibles para una fecha seleccionada.
+- Información detallada de cada pista y sus franjas horarias disponibles.
+- Selección de franjas contiguas con estados visuales (seleccionado, elegible, no elegible).
+- Cálculo dinámico del precio según franjas y extras seleccionados.
+- Proceso de reserva con modales de confirmación y éxito.
+- Sección "Mis reservas" con listado y cancelación de reservas.
+- Sistema de autenticación con contexto global.
+- Rutas privadas y rutas de administrador.
+- Panel de administración (frontend) para gestionar:
+  - Pistas
+  - Horarios
+  - Extras
+  - Roles
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Vite
+- React
+- JavaScript
+- React Router
+- TailwindCSS
+- Context API
+- Fetch wrapper propio (services/api.js)
+
+---
+
+## Estructura del proyecto
+
+src  
+├── assets/
+├── components/
+│   ├── courts/
+│   ├── modals/
+│   ├── reservas/
+│   └── ui/
+│   └── PublicNavbar.jsx  
+├── context/
+│   ├── AuthContext.jsx
+│   └── useAuth.js
+├── layouts/
+├── pages/
+│   ├── admin/
+│   ├── Dashboard.jsx  
+│   ├── Landing.jsx  
+│   ├── Login.jsx  
+│   ├── MisReservas.jsx  
+│   └── Register.jsx  
+├── router/  
+├── services/
+├── App.css  
+├── App.jsx  
+├── index.css  
+└── main.jsx
+
+---
+
+## Instalación y ejecución
+
+1. Instalar dependencias:
+   npm install
+
+2. Ejecutar en modo desarrollo:
+   npm run dev
+
+3. Variables de entorno:
+   El proyecto utiliza archivos .env.local y .env.production para configurar la URL de la API y otros parámetros necesarios.
+
+---
+
+## Estado del proyecto
+
+CourtLab es un proyecto en desarrollo dentro de un entorno formativo.  
+Las funcionalidades principales están implementadas y operativas.  
+La API actual devuelve únicamente las franjas disponibles; futuras versiones permitirán mostrar todas las franjas y ampliar la lógica de selección.
+
+---
+
+## Licencia
+
+Proyecto de uso educativo.
