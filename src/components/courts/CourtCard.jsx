@@ -4,6 +4,7 @@ import TimeSlotButton from "./TimeSlotButton";
 import ExtrasSelector from "./ExtrasSelector";
 import PriceDisplay from "./PriceDisplay";
 import ReserveButton from "./ReserveButton";
+import CourtMetaData from "./CourtMetaData";
 
 export default function CourtCard({ pista, fecha }) {
   const [selectedSlots, setSelectedSlots] = useState([]);
@@ -65,6 +66,13 @@ export default function CourtCard({ pista, fecha }) {
     }
   };
 
+  // Reset si cambia la fecha
+  useEffect(() => {
+    setSelectedSlots([]);
+    setExtras([]);
+    setPrice(null);
+  }, [fecha]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedSlots.length === 0) {
@@ -97,11 +105,21 @@ export default function CourtCard({ pista, fecha }) {
         {pista.pista_nombre}
       </h3>
 
+      <CourtMetaData pistaId={pista.pista_id} />
+
+
       {/* Franjas agrupadas por turno */}
       {["mañana", "tarde", "noche"].map(turno => (
         groupedSlots[turno].length > 0 && (
-          <div key={turno} className="mb-6">
-            <h4 className="text-lg font-semibold mb-2 capitalize">{turno}</h4>
+          <div key={turno} className="mb-6 relative pl-6 border-b-1 border-[#C7FF41]">
+
+            {/* Flag lateral */}
+            <div className="absolute left-0 top-0 bottom-0 w-4 flex items-center justify-center">
+              <span className="-rotate-90 text-[10px] tracking-widest text-white/50 whitespace-nowrap uppercase">
+                {turno}
+              </span>
+            </div>
+
             <div className="flex flex-wrap gap-2">
               {groupedSlots[turno].map(slot => {
                 const id = slot.horario_id;
@@ -112,7 +130,7 @@ export default function CourtCard({ pista, fecha }) {
                     slot={slot}
                     selected={selectedSlots.includes(id)}
                     eligible={eligibleSlots.includes(id)}
-                    disabled={false} // futuro: !slot.disponible
+                    disabled={false}
                     onClick={() => handleSlotClick(id)}
                   />
                 );
@@ -121,6 +139,7 @@ export default function CourtCard({ pista, fecha }) {
           </div>
         )
       ))}
+
 
       {/* Extras */}
       <ExtrasSelector extras={extras} setExtras={setExtras} />

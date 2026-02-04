@@ -27,6 +27,7 @@ export default function Dashboard() {
         <input
           type="date"
           value={selectedDate}
+          min={new Date().toISOString().split("T")[0]}
           onChange={(e) => setSelectedDate(e.target.value)}
           className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[#C7FF41] outline-none transition"
         />
