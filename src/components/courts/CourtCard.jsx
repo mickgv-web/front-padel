@@ -105,8 +105,8 @@ export default function CourtCard({ pista, fecha }) {
         {pista.pista_nombre}
       </h3>
 
+      {/* Componente temporal para mostrar datos de pista, luego vendrá de la API */}
       <CourtMetaData pistaId={pista.pista_id} />
-
 
       {/* Franjas agrupadas por turno */}
       {["mañana", "tarde", "noche"].map(turno => (
